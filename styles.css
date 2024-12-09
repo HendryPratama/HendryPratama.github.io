@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  header {
+    background: #4CAF50;
+    color: #fff;
+    text-align: center;
+    padding: 1.5em 0;
+  }
+  
+  
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2em;
+  }
+  
+  .profile-photo {
+    border-radius: 25%;
+    max-width: 350px;
+  }
+  
+  .screenshot1{
+    max-width: 500px;
+  } 
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1em 0;
+    background: #333;
+  }
+  
+  .nav-links li {
+    margin: 0 1em;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .skills-list, .project-card {
+    margin: 1em 0;
+    padding: 1em;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+  }
+  .contact-info ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .contact-info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+  }
+  
+  .contact-info i {
+    font-size: 1.5em;
+    margin-right: 0.5em;
+    color: #4CAF50; /* Green color for icons */
+  }
+  
+  .contact-info a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  
+  footer {
+    text-align: center;
+    background: #333;
+    color: white;
+    padding: 1em 0;
+  }
+  
