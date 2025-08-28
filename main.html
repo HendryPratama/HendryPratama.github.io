@@ -1,79 +1,1226 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Home</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hendry Pratama — AI Engineer & Data Scientist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #0ea5e9;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-dark: #0f172a;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--gradient-1);
+      color: white;
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 100%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 20s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 4rem;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      box-shadow: var(--shadow-2xl);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text .subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text .description {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
+
+    /* Navigation */
+    .nav-tabs {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-container {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .nav-link {
+      padding: 1rem 2rem;
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 600;
+      border-radius: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      background: transparent;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: white;
+      background: var(--gradient-1);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Section Styling */
+    .section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .section:nth-child(even) {
+      background: var(--bg-secondary);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+    }
+
+    .project-card {
+      background: var(--bg-primary);
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      position: relative;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-2xl);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 250px;
+      background: var(--gradient-2);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-card:nth-child(2n) .project-image { background: var(--gradient-3); }
+    .project-card:nth-child(3n) .project-image { background: var(--gradient-4); }
+    .project-card:nth-child(4n) .project-image { background: var(--gradient-1); }
+
+    .project-image::before {
+      content: attr(data-project);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      opacity: 0.9;
+      z-index: 2;
+    }
+
+    .project-image::after {
+      content: '📸';
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      opacity: 0.7;
+    }
+
+    .project-content {
+      padding: 2.5rem;
+    }
+
+    .project-year {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: var(--primary);
+      color: white;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .project-role {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tech-tag {
+      padding: 0.3rem 0.8rem;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-description {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-description li {
+      color: var(--text-secondary);
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .project-description li::before {
+      content: '🚀';
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* Experience Section */
+    .experience-timeline {
+      position: relative;
+      margin: 3rem 0;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--gradient-1);
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .experience-content {
+      background: var(--bg-primary);
+      padding: 2.5rem;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .experience-content:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .experience-dot {
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: var(--shadow);
+      z-index: 2;
+    }
+
+    .experience-date {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-company {
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .skill-category {
+      background: var(--bg-primary);
+      padding: 2.5rem;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .skill-category h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .skill-tag {
+      padding: 0.7rem 1.2rem;
+      background: var(--gradient-1);
+      color: white;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Education & Certificates */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .education-card {
+      background: var(--bg-primary);
+      padding: 2.5rem;
+      border-radius: 2rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .education-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: var(--gradient-1);
+    }
+
+    .education-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    /* Contact Section */
+    .contact-container {
+      background: var(--gradient-1);
+      color: white;
+      border-radius: 2rem;
+      padding: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-container h3 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-item {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      padding: 2rem;
+      border-radius: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--bg-dark);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .experience-timeline::before {
+        left: 2rem;
+      }
+      
+      .experience-item {
+        grid-template-columns: auto 1fr;
+        gap: 2rem;
+        margin-left: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+        min-height: 80vh;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .avatar {
+        width: 120px;
+        height: 120px;
+        font-size: 2.5rem;
+        margin: 0 auto;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+      }
+
+      .nav-container {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+
+      .nav-link {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .projects-grid,
+      .skills-container,
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
+  <div class="animated-bg"></div>
+
+  <!-- Hero Section -->
+  <section class="hero">
     <div class="container">
-      <img src="photo1.jpg" alt="Your Photo" class="profile-photo">
-      <h1>Hendry Pratama</h1>
-      <p class="tagline">Turning Data into Insights, and Insights into Knowladge</p>
+      <div class="hero-content">
+        <div class="avatar">HP</div>
+        <div class="hero-text">
+          <h1>Hendry Pratama</h1>
+          <div class="subtitle">AI Engineer & Data Scientist</div>
+          <div class="description">
+            Pioneering AI Agent development with extensive expertise in vector databases, LLM integration, and advanced analytics. Specializing in strategic communication systems, urban intelligence, and automated decision-making solutions that transform complex data into actionable insights.
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">4+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">8+</div>
+              <div class="stat-label">Major Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">⭐5</div>
+              <div class="stat-label">Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <nav class="container">
-    <ul class="nav-links">
-      <!-- <li><a href="skills.html">Skills</a></li> -->
-      <li><a href="projects.html">Projects</a></li>
-      <!-- <li><a href="contact.html">Contact</a></li> -->
-    </ul>
-  </header>
-  
+  </section>
+
+  <!-- Navigation -->
+  <nav class="nav-tabs">
+    <div class="container">
+      <div class="nav-container">
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link active">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
   </nav>
 
-  <section class="container about">
-    <h2>About Me</h2>
-    <p>Experienced  <strong>Data Scientist</strong> and <strong>AI Engineer</strong>, excelling in leveraging machine
-        learning and data science to deliver innovative AI solutions and insightful data
-        analytics. With expertise in data analysis, AI model integration, and advanced data
-        management, I am skilled in optimizing complex query systems, designing scalable
-        systems, and integrating Large Language Models (LLMs) to develop cutting-edge,
-        real-world solutions. Proficient in Python programming, I consistently advance
-        technology and productivity through impactful and scalable implementations.
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">
+          A comprehensive showcase of AI engineering and data science projects spanning strategic communication, urban analytics, social network analysis, and automated systems.
         </p>
+      </div>
+      
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-image" data-project="AI Strategic Communication System">
+            <img src="project-strategic-comm.jpg" alt="Strategic Communication Chatbot" style="width: 100%; height: 100%; object-fit: cover; display: none;" onerror="this.style.display='none';">
+          </div>
+          <div class="project-content">
+            <span class="project-year">2025</span>
+            <h3 class="project-title">Strategic Communication Chatbot & Hansard Parliament Agent</h3>
+            <div class="project-role">AI Engineer</div>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">vLLM</span>
+            </div>
+            <ul class="project-description">
+              <li>Engineered AI-powered chatbot specialized in strategic political communication with advanced reasoning capabilities</li>
+              <li>Developed Hansard Parliament analysis agent for extracting debate topics and detecting political dynamics</li>
+              <li>Integrated Large Language Models with LangGraph for dynamic multi-step workflows and decision trees</li>
+              <li>Delivered structured political insights enabling data-driven communication strategy and alliance mapping</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" data-project="Customer Service & Retail AI">
+            <img src="project-customer-service.jpg" alt="Customer Service Chatbot" style="width: 100%; height: 100%; object-fit: cover; display: none;" onerror="this.style.display='none';">
+          </div>
+          <div class="project-content">
+            <span class="project-year">2024</span>
+            <h3 class="project-title">Customer Service Chatbot & Retail Optimization AI</h3>
+            <div class="project-role">AI Engineer / Data Scientist</div>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">LangGraph</span>
+              <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">Computer Vision</span>
+            </div>
+            <ul class="project-description">
+              <li>Deployed intelligent chatbot system automating customer responses and enhancing support efficiency by 65%</li>
+              <li>Created advanced image analysis model for minimarket rack arrangement scoring and optimization</li>
+              <li>Implemented AI-driven product placement recommendations improving inventory turnover</li>
+              <li>Integrated multi-modal AI capabilities combining NLP and computer vision for retail intelligence</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" data-project="Urban Observatory System">
+            <img src="project-urban-observatory.jpg" alt="Urban Observatory Dashboard" style="width: 100%; height: 100%; object-fit: cover; display: none;" onerror="this.style.display='none';">
+          </div>
+          <div class="project-content">
+            <span class="project-year">2023</span>
+            <h3 class="project-title">Urban Observatory Analysis System</h3>
+            <div class="project-role">Data Scientist</div>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Tableau</span>
+              <span class="tech-tag">QGIS</span>
+              <span class="tech-tag">Geospatial Analysis</span>
+            </div>
+            <ul class="project-description">
+              <li>Architected comprehensive Transport Oriented Development dashboard for Kuala Lumpur metropolitan area</li>
+              <li>Developed advanced geospatial analysis system processing socio-economic data across Malaysian administrative units</li>
+              <li>Created interactive visualizations supporting urban planning and smart city policy initiatives</li>
+              <li>Enabled data-driven decision making for sustainable urban development and infrastructure planning</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" data-project="Social Network Analysis Platform">
+            <img src="project-social-network.jpg" alt="Social Network Analysis" style="width: 100%; height: 100%; object-fit: cover; display: none;" onerror="this.style.display='none';">
+          </div>
+          <div class="project-content">
+            <span class="project-year">2022</span>
+            <h3 class="project-title">Social Network Analysis Platform</h3>
+            <div class="project-role">Data Scientist</div>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Gephi</span>
+              <span class="tech-tag">Twitter API</span>
+              <span class="tech-tag">Network Analysis</span>
+            </div>
+            <ul class="project-description">
+              <li>Engineered advanced influencer detection algorithms across multiple social media platforms</li>
+              <li>Performed comprehensive community detection analysis revealing hidden network structures</li>
+              <li>Generated strategic communication reports for political stakeholders with actionable insights</li>
+              <li>Delivered data-driven digital engagement strategies optimizing reach and influence metrics</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" data-project="E-commerce Intelligence System">
+            <img src="project-ecommerce-analysis.jpg" alt="Shopee Analysis Dashboard" style="width: 100%; height: 100%; object-fit: cover; display: none;" onerror="this.style.display='none';">
+          </div>
+          <div class="project-content">
+            <span class="project-year">2021</span>
+            <h3 class="project-title">E-commerce Shopee Analysis – Seller Intelligence & Risk Prediction</h3>
+            <div class="project-role">Data Scientist</div>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Tableau</span>
+              <span class="tech-tag">Monte Carlo</span>
+            </div>
+            <ul class="project-description">
+              <li>Developed custom Monte Carlo simulation models optimized for Shopee marketplace dynamics</li>
+              <li>Implemented advanced seller clustering algorithms segmenting merchants by behavior and performance patterns</li>
+              <li>Built predictive risk assessment models estimating seller growth potential and transaction risks</li>
+              <li>Enhanced fraud prevention strategies through comprehensive risk analysis and early warning systems</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image" data-project="Loan Recommendation Engine">
+            <img src="project-loan-system.jpg" alt="Loan Recommendation System" style="width: 100%; height: 100%; object-fit: cover; display: none;" onerror="this.style.display='none';">
+          </div>
+          <div class="project-content">
+            <span class="project-year">2020</span>
+            <h3 class="project-title">Intelligent Loan Recommendation System</h3>
+            <div class="project-role">Internship Student</div>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">Risk Analysis</span>
+              <span class="tech-tag">Financial Modeling</span>
+            </div>
+            <ul class="project-description">
+              <li>Architected intelligent loan recommendation system determining optimal loan types and appropriate sizing</li>
+              <li>Developed comprehensive borrower risk assessment models using financial variables and historical data</li>
+              <li>Integrated geolocation data analysis for enhanced risk profiling and regional market insights</li>
+              <li>Streamlined loan approval decision-making through data-driven insights and automated recommendations</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
   </section>
 
-  <section class="container about">
-    <!-- <ul class="skills-list"> -->
-    <h2>Skills</h2>
-    <li>Machine Learning and AI</li>
-    <li>Large Language Models (OpenAI, LangChain, Ollama, Nomic, Atlas)</li>
-    <li>Vector Database</li>
-    <li>Python, SQL and Big Data Processing</li>
-    <li>Data Visualization</li>
-    <!-- </ul> -->
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle">
+          Building cutting-edge AI solutions and data-driven systems across diverse industries and challenging problem domains.
+        </p>
+      </div>
+      
+      <div class="experience-timeline">
+        <div class="experience-item">
+          <div class="experience-content">
+            <div class="experience-date">Sep 2021 – Present</div>
+            <h3 class="experience-title">Data Scientist</h3>
+            <div class="experience-company">eBdesk Malaysia Sdn Bhd, Kuala Lumpur</div>
+            <ul class="project-description">
+              <li>Pioneered AI Agent development for Strategic Communication and Hansard Parliament classification systems</li>
+              <li>Mastered vector databases for high-dimensional data storage and complex query optimization with LLM integration</li>
+              <li>Engineered customer service chatbots and AI-powered image analysis for retail optimization</li>
+              <li>Architected Urban Observatory Analysis system leveraging geospatial and socio-economic intelligence</li>
+              <li>Implemented Apache Spark parallel processing for large-scale dataset analysis and optimization</li>
+              <li>Conducted comprehensive data analysis across eCommerce, healthcare, and social welfare sectors</li>
+              <li>Executed advanced social network analysis on Twitter and YouTube platforms</li>
+              <li>Developed sophisticated forecasting models and anomaly detection systems</li>
+              <li>Created dynamic visualization dashboards using Tableau and Chart.js for executive decision-making</li>
+            </ul>
+          </div>
+          <div class="experience-dot"></div>
+          <div></div>
+        </div>
+
+        <div class="experience-item">
+          <div></div>
+          <div class="experience-dot"></div>
+          <div class="experience-content">
+            <div class="experience-date">July 2020 – Aug 2020</div>
+            <h3 class="experience-title">Banking Internship</h3>
+            <div class="experience-company">Bank BRI, Way Halim Branch, Bandar Lampung</div>
+            <ul class="project-description">
+              <li>Developed intelligent loan recommendation algorithms for optimal loan type determination</li>
+              <li>Created risk assessment models for appropriate loan sizing and approval optimization</li>
+              <li>Analyzed financial data patterns to improve lending decision accuracy and reduce default risks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section class="container contact-info">
-    <h2>Connect with Me</h2>
-    <ul>
-      <li>
-        <i class="fas fa-phone"></i>
-        <strong>Phone Id: </strong>+62 895-7042-54907
-      </li>
-      <li>
-        <i class="fas fa-phone"></i>
-        <strong>Phone My: </strong>+60 16-7290-470
-      </li>
-      <li>
-        <i class="fas fa-envelope"></i>
-        <strong>Email: </strong> 
-        <a href="mailto:pratamahendry45@gmail.com">pratamahendry45@gmail.com</a>
-      </li>
-      <li>
-        <i class="fab fa-linkedin"></i>
-        <strong>LinkedIn: </strong> 
-        <a href="https://www.linkedin.com/in/hendry-pratama-8771b41b7/" target="_blank">LinkedIn Profile</a>
-      </li>
-    </ul>
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">
+          Comprehensive technical expertise spanning AI engineering, data science, and advanced analytics with proven industry applications.
+        </p>
+      </div>
+      
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>🚀 AI & Machine Learning</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">LLM Agent Development</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">vLLM</span>
+            <span class="skill-tag">Vector Databases</span>
+            <span class="skill-tag">Scikit-learn</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>💻 Programming & Data</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">PySpark</span>
+            <span class="skill-tag">Big Data Processing</span>
+            <span class="skill-tag">SQL/NoSQL</span>
+            <span class="skill-tag">Graph Databases</span>
+            <span class="skill-tag">Apache Spark</span>
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">MATLAB</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>📊 Visualization & Analytics</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">Data Visualization</span>
+            <span class="skill-tag">Chart.js</span>
+            <span class="skill-tag">ECharts</span>
+            <span class="skill-tag">QGIS</span>
+            <span class="skill-tag">Geospatial Analysis</span>
+            <span class="skill-tag">Network Analysis</span>
+            <span class="skill-tag">Gephi</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🧠 Soft Skills</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Analytical Thinking</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Adaptability</span>
+            <span class="skill-tag">Collaboration</span>
+            <span class="skill-tag">Communication</span>
+            <span class="skill-tag">Strategic Planning</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🛠️ Tools & Platforms</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Ollama</span>
+            <span class="skill-tag">SPSS</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Git/GitHub</span>
+            <span class="skill-tag">Jupyter</span>
+            <span class="skill-tag">Google Cloud</span>
+            <span class="skill-tag">AWS</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h3>🌐 Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Indonesian (Native)</span>
+            <span class="skill-tag">English (Intermediate)</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Education & Certifications</h2>
+        <p class="section-subtitle">
+          Strong mathematical foundation with continuous learning in cutting-edge AI technologies and cloud platforms.
+        </p>
+      </div>
+      
+      <div class="education-grid">
+        <div class="education-card">
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">🎓 Academic Background</h3>
+          <div style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Bachelor of Mathematics</h4>
+            <div style="color: var(--text-secondary); margin-bottom: 0.5rem;">Sumatera Institute of Technology</div>
+            <div style="color: var(--text-muted); margin-bottom: 0.5rem;">Sep 2017 – June 2021</div>
+            <div style="background: var(--gradient-1); color: white; padding: 0.5rem 1rem; border-radius: 1rem; display: inline-block; font-weight: 600;">GPA: 3.69 / 4.0</div>
+          </div>
+          <div>
+            <h4 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--accent);">🏆 Bank Indonesia Scholarship</h4>
+            <div style="color: var(--text-secondary);">Sep 2019 – June 2020</div>
+          </div>
+        </div>
 
+        <div class="education-card">
+          <h3 style="color: var(--primary); margin-bottom: 1rem;">📜 Professional Certifications</h3>
+          <div>
+            <h4 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">Developer Generative AI</h4>
+            <div style="color: var(--text-secondary); margin-bottom: 0.5rem;">Alibaba Cloud Certification</div>
+            <div style="color: var(--text-muted); margin-bottom: 1rem;">Jan 02, 2027</div>
+            <div style="background: rgba(16, 185, 129, 0.1); color: var(--success); padding: 0.5rem 1rem; border-radius: 1rem; display: inline-block; font-weight: 600;">🚀 Advanced AI Specialization</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>© 2024 Hendry Pratama. All Rights Reserved.</p>
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-container">
+        <div class="contact-content">
+          <h3>Let's Build the Future Together</h3>
+          <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+            Ready to transform your business with cutting-edge AI solutions and data-driven insights? Let's discuss how we can turn your most complex challenges into competitive advantages.
+          </p>
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <div style="font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem;">📧 Email</div>
+              <div style="font-family: 'Monaco', monospace; background: rgba(0,0,0,0.2); padding: 0.8rem 1.2rem; border-radius: 0.8rem; font-size: 1rem;">pratamahendry45@gmail.com</div>
+            </div>
+            <div class="contact-item">
+              <div style="font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem;">💼 LinkedIn</div>
+              <div style="font-family: 'Monaco', monospace; background: rgba(0,0,0,0.2); padding: 0.8rem 1.2rem; border-radius: 0.8rem; font-size: 1rem;">linkedin.com/in/hendry-pratama-8771b41b7/</div>
+            </div>
+            <div class="contact-item">
+              <div style="font-weight: 600; margin-bottom: 1rem; font-size: 1.1rem;">🐙 GitHub</div>
+              <div style="font-family: 'Monaco', monospace; background: rgba(0,0,0,0.2); padding: 0.8rem 1.2rem; border-radius: 0.8rem; font-size: 1rem;">github.com/HendryPratama</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.1); border-radius: 1.5rem; backdrop-filter: blur(20px);">
+            <h4 style="margin-bottom: 1rem; font-size: 1.3rem;">🎯 Available For:</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+              <span style="padding: 0.6rem 1.2rem; background: rgba(255,255,255,0.2); border-radius: 2rem; font-weight: 500;">AI Consulting</span>
+              <span style="padding: 0.6rem 1.2rem; background: rgba(255,255,255,0.2); border-radius: 2rem; font-weight: 500;">Data Science Projects</span>
+              <span style="padding: 0.6rem 1.2rem; background: rgba(255,255,255,0.2); border-radius: 2rem; font-weight: 500;">ML Engineering</span>
+              <span style="padding: 0.6rem 1.2rem; background: rgba(255,255,255,0.2); border-radius: 2rem; font-weight: 500;">Full-time Opportunities</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div style="opacity: 0.8;">© 2025 Hendry Pratama • AI Engineer & Data Scientist</div>
+        <div style="opacity: 0.6;">Crafted with ❤️ and ⚡ cutting-edge technology</div>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // Enhanced smooth scrolling with easing
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 100;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Update active nav link
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Enhanced scroll spy with smooth transitions
+    let ticking = false;
+    
+    function updateActiveNavLink() {
+      const sections = document.querySelectorAll('.section');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const scrollPosition = window.scrollY + 200;
+      
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+      
+      ticking = false;
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveNavLink);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', requestTick);
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards for animation
+    document.querySelectorAll('.project-card, .education-card, .skill-category').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(50px)';
+      card.style.transition = 'all 0.6s ease';
+      observer.observe(card);
+    });
+
+    // Enhanced project card interactions
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px) scale(1.02)';
+        card.style.boxShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+        card.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)';
+      });
+    });
+
+    // Skill tag hover effects
+    document.querySelectorAll('.skill-tag').forEach(tag => {
+      tag.addEventListener('mouseenter', () => {
+        tag.style.transform = 'translateY(-3px) scale(1.05)';
+      });
+      
+      tag.addEventListener('mouseleave', () => {
+        tag.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+  </script>
 </body>
 </html>
